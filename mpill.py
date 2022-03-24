@@ -3,7 +3,6 @@
 from bs4 import BeautifulSoup
 import requests
 import os
-import cloudscraper
 
 BASE_URL = 'https://mangapill.com'
 
