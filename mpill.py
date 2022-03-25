@@ -1,4 +1,4 @@
-# Downloads mangas from manganato
+# Downloads mangas from mangapill.com
 
 from bs4 import BeautifulSoup
 import requests
@@ -64,7 +64,7 @@ def main():
                         print(f"File has downloaded! Saved as {filenm}")
                     except:
                         print("Couldn't download file")    
-                        print(f"Here's the download link: {download_url}")
+                        print(f"Here's the download link: {url}")
 
 if __name__ == '__main__':
     main()
