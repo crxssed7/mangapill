@@ -6,6 +6,24 @@ import os
 
 BASE_URL = 'https://mangapill.com'
 
+def download(pages, chp_folder):
+    for page in pages:
+        # Download the page
+        try:
+            url = page['data-src']
+            filenm = chp_folder + '/' + url.split('/')[-1]
+
+            r = requests.get(url)
+
+            open(filenm, 'wb').write(r.content)
+            
+            print(f"File has downloaded! Saved as {filenm}")
+        except KeyboardInterrupt:
+            exit()
+        except:
+            print("Couldn't download file")    
+            print(f"Here's the download link: {url}")
+
 def whole():
     query = input('Enter manga url: ')
 
@@ -51,20 +69,7 @@ def whole():
 
                 pages = chapter_parser.find_all('img', attrs={'class': 'js-page'})
 
-                for page in pages:
-                    # Download the page
-                    try:
-                        url = page['data-src']
-                        filenm = chp_folder + '/' + url.split('/')[-1]
-
-                        r = requests.get(url)
-
-                        open(filenm, 'wb').write(r.content)
-            
-                        print(f"File has downloaded! Saved as {filenm}")
-                    except:
-                        print("Couldn't download file")    
-                        print(f"Here's the download link: {url}")
+                download(pages, chp_folder)
 
 def single():
     query = input('Enter manga url: ')
@@ -117,20 +122,7 @@ def single():
 
             pages = chapter_parser.find_all('img', attrs={'class': 'js-page'})
 
-            for page in pages:
-                # Download the page
-                try:
-                    url = page['data-src']
-                    filenm = chp_folder + '/' + url.split('/')[-1]
-
-                    r = requests.get(url)
-
-                    open(filenm, 'wb').write(r.content)
-        
-                    print(f"File has downloaded! Saved as {filenm}")
-                except:
-                    print("Couldn't download file")    
-                    print(f"Here's the download link: {url}")
+            download(pages, chp_folder)
 
 
 if __name__ == '__main__':
