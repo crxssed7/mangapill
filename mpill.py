@@ -25,6 +25,7 @@ def download(pages, chp_folder):
             print(f"Here's the download link: {url}")
 
 def whole():
+    print('Downloading all chapters of a manga!')
     query = input('Enter manga url: ')
 
     response = requests.get(query)
@@ -72,6 +73,7 @@ def whole():
                 download(pages, chp_folder)
 
 def single():
+    print('Downloading a single chapter of a manga!')
     query = input('Enter manga url: ')
 
     response = requests.get(query)
