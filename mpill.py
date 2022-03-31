@@ -45,7 +45,7 @@ def whole():
             os.mkdir(manga_name)
         except FileExistsError:
             pass
-        print(chapters)
+
         # Loop and download the chapters
         for chapter in chapters:
             # Get the link for the chapter
