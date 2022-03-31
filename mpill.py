@@ -4,7 +4,7 @@ from bs4 import BeautifulSoup
 import requests
 import os
 
-BASE_URL = 'https://mangapill.com'
+BASE_URL = 'https://mangapill.com/manga/'
 
 def download(pages, chp_folder):
     for page in pages:
@@ -26,9 +26,9 @@ def download(pages, chp_folder):
 
 def whole():
     print('Downloading all chapters of a manga!')
-    query = input('Enter manga url: ')
+    query = input('Enter manga ID: ')
 
-    response = requests.get(query)
+    response = requests.get(BASE_URL + query)
 
     if response.status_code == requests.codes.ok:
         doc_response = response.text
@@ -74,9 +74,9 @@ def whole():
 
 def single():
     print('Downloading a single chapter of a manga!')
-    query = input('Enter manga url: ')
+    query = input('Enter manga ID: ')
 
-    response = requests.get(query)
+    response = requests.get(BASE_URL + query)
 
     if response.status_code == requests.codes.ok:
         doc_response = response.text
